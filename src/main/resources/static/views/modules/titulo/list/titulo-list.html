@@ -1,0 +1,71 @@
+<div class="container-fluid">
+    <div class="panel panel-default">
+        <div class="clearfix  panel-heading ">
+            <div class="pull-right form-inline" style="margin-top: 15px">
+                <button type="button" class="btn btn-default" ui-sref="home">Voltar</button>
+                <button type="button" class="btn btn-primary" ng-click="$ctrl.createTitulo()"> Novo</button>
+            </div>
+            <div class=""><h3>Titulos</h3></div>
+        </div>
+        <flash-message name="titulo-list"></flash-message>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table table-hover ">
+                    <thead>
+                    <tr>
+                        <th>Entidade</th>
+                        <th class="center">Descrição</th>
+                        <th class="center">Data Validade</th>
+                        <th class="center">Situação</th>
+                        <th class="center">Status</th>
+                    </tr>
+                    <tr>
+                        <th>
+                            <input class="input-sm form-control" type="search" ng-model="$ctrl.titulo.entidade.nome"/>
+                        </th>
+                        <th class="center">
+                            <input class="input-sm form-control" type="search" ng-model="$ctrl.titulo.descricao"/>
+                        </th>
+                        <th class="center">
+                            <input class="input-sm form-control" type="date" ng-model="$ctrl.titulo.dataDeValidade"
+                                   disabled/>
+                        </th>
+                        <th class="center">
+                            <input class="input-sm form-control" type="search" ng-model="$ctrl.titulo.situacao"/>
+                        </th>
+                        <th class="center">
+                            <select class="form-control" ng-model="$ctrl.titulo.status"
+                                    ng-options=" status.value as status.name  for status in $ctrl.statusList">
+                            </select>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr dir-paginate="titulo in filterTitulos =
+                    ($ctrl.titulos
+                    | filter:$ctrl.titulo.entidade.nome
+                    | filter:$ctrl.titulo.descricao
+                    | filter:$ctrl.titulo.telefone
+                    | filter:$ctrl.titulo.status ) | itemsPerPage: 10" ng-click="$ctrl.updateTitulo(titulo)">
+                        <td>{{titulo.entidade.nome}}</td>
+                        <td class="center">{{titulo.descricao}}</td>
+                        <td class="center">{{titulo.dataDeValidade | date: 'dd/MM/yyyy'}}</td>
+                        <td class="center">{{titulo.situacao}}</td>
+                        <td class="center">
+                            <span ng-if="titulo.status === true">Ativo</span>
+                            <span ng-if="titulo.status === false">Inativo</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="9" ng-if="$ctrl.titulos === 0">Nenhuma titulo encontrada!</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <br>
+                <div class="text-center center">
+                    <dir-pagination-controls max-size="8" boundary-links="true"></dir-pagination-controls>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

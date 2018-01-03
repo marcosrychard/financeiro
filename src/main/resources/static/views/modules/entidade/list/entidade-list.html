@@ -1,0 +1,70 @@
+<div class="container-fluid">
+    <div class="panel panel-default">
+        <div class="clearfix  panel-heading ">
+            <div class="pull-right form-inline" style="margin-top: 15px">
+                <button type="button" class="btn btn-default" ui-sref="home">Voltar</button>
+                <button type="button" class="btn btn-primary" ng-click="$ctrl.createEntidade()"> Novo</button>
+            </div>
+            <div class=""><h3>Entidades</h3></div>
+        </div>
+        <flash-message name="entidade-list"></flash-message>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table table-hover ">
+                    <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th class="center">CPF/CNPJ</th>
+                        <th class="center">E-mail</th>
+                        <th class="center">Telefone</th>
+                        <th class="center">Status</th>
+                    </tr>
+                    <tr>
+                        <th>
+                            <input class="input-sm form-control" type="search" ng-model="$ctrl.entidade.nome"/>
+                        </th>
+                        <th class="center">
+                            <input class="input-sm form-control" type="search" ng-model="$ctrl.entidade.cpfOuCnpj"/>
+                        </th>
+                        <th class="center">
+                            <input class="input-sm form-control" type="search" ng-model="$ctrl.entidade.email"/>
+                        </th>
+                        <th class="center">
+                            <input class="input-sm form-control" type="search" ng-model="$ctrl.entidade.telefone"/>
+                        </th>
+                        <th class="center">
+                            <select class="form-control" ng-model="$ctrl.entidade.status"
+                                    ng-options=" status.value as status.name  for status in $ctrl.statusList">
+                            </select>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr dir-paginate="entidade in filterEntidades =
+                    ($ctrl.entidades
+                    | filter:$ctrl.entidade.nome
+                    | filter:$ctrl.entidade.email
+                    | filter:$ctrl.entidade.telefone
+                    | filter:$ctrl.entidade.status ) | itemsPerPage: 10" ng-click="$ctrl.updateEntidade(entidade)" >
+                        <td>{{entidade.nome}}</td>
+                        <td class="center">{{entidade.cpfOuCnpj}}</td>
+                        <td class="center">{{entidade.email}}</td>
+                        <td class="center">{{entidade.telefone}}</td>
+                        <td class="center">
+                            <span ng-if="entidade.status === true">Ativo</span>
+                            <span ng-if="entidade.status === false">Inativo</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="9" ng-if="$ctrl.entidades === 0">Nenhuma entidade encontrada!</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <br>
+                <div class="text-center center">
+                    <dir-pagination-controls max-size="8" boundary-links="true"></dir-pagination-controls>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

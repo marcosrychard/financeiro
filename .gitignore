@@ -1,0 +1,11 @@
+target/
+!.mvn/wrapper/maven-wrapper.jar
+package-lock.json
+.idea
+*.iws
+*.iml
+*.ipr
+
+bower_components/
+node_modules/
+src/main/resources/static/build/

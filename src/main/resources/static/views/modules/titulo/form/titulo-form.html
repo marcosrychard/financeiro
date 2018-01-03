@@ -1,0 +1,94 @@
+<div class="container-fluid">
+    <div class="panel panel-default">
+        <form ng-submit="$ctrl.saveTitulo()">
+            <div class="clearfix  panel-heading ">
+                <div class="pull-right form-inline" style="margin-top: 15px">
+                    <button type="button" class="btn btn-default" ui-sref="titulo">Voltar</button>
+                    <button type="submit" class="btn btn-primary "> {{!!$ctrl.titulo.codigo ? 'Atualizar' :
+                        'Cadastrar'}}
+                    </button>
+                </div>
+                <div class=""><h3>Formulario de Titulo</h3></div>
+            </div>
+            <flash-message name="titulo-list"></flash-message>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="entidade">Entidade</label>
+                        <input type="text" class="form-control" id="entidade"
+                               ng-model="$ctrl.titulo.entidade.nome"
+                               autocomplete="off"
+                               uib-typeahead="entidade for entidade in $ctrl.entidades | filter:$viewValue | limitTo:8"/>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="descricao">Descrição</label>
+                        <input type="text" class="form-control" id="descricao"
+                               ng-model="$ctrl.titulo.descricao"/>
+                    </div>
+                    <div class="col-md-3" ng-show="$ctrl.titulo.codigo">
+                        <label>Status</label>
+                        <select class="form-control" ng-model="$ctrl.titulo.status"
+                                ng-options=" status.value as status.name  for status in $ctrl.statusList">
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="dataDeEmissao">Data emissão</label>
+                        <input type="date" class="form-control" id="dataDeEmissao"
+                               ng-model="$ctrl.titulo.dataDeEmissao"/>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="dataDeValidade">Data Validade</label>
+                        <input type="date" class="form-control" id="dataDeValidade"
+                               ng-model="$ctrl.titulo.dataDeValidade"/>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="dataDoPagamento">Data pagamento</label>
+                        <input type="date" class="form-control" id="dataDoPagamento"
+                               ng-model="$ctrl.titulo.dataDoPagamento"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="valor">Valor restante</label>
+                        <input type="text" class="form-control" id="valor"
+                               ng-model="$ctrl.titulo.valor"/>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="valorPago">Valor pago</label>
+                        <input type="text" class="form-control" id="valorPago"
+                               ng-model="$ctrl.titulo.valorPago"/>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="valorOriginal">Valor original</label>
+                        <input type="text" class="form-control" id="valorOriginal"
+                               ng-model="$ctrl.titulo.valorOriginal"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="tipo">Tipo</label>
+                        <select id="tipo" class="form-control" ng-model="$ctrl.titulo.tipo"
+                                ng-options=" tipo for tipo in $ctrl.tiposList">
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="tipoPagamento">Tipo pagamento</label>
+                        <select id="tipoPagamento" class="form-control" ng-model="$ctrl.titulo.tipoPagamento"
+                                ng-options=" tipoPagamento for tipoPagamento in $ctrl.tipoPagamentoList">
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="situacao">Situação</label>
+                        <select id="situacao" class="form-control" ng-model="$ctrl.titulo.situacao"
+                                ng-options=" situacao for situacao in $ctrl.situacaoList">
+                        </select>
+                    </div>
+                </div>
+                <br>
+            </div>
+        </form>
+        <br> <br>
+    </div>
+</div>

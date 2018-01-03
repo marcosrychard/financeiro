@@ -1,0 +1,1 @@
+angular.module('relatorioModule', ['entidadeModule', 'tituloModule']);

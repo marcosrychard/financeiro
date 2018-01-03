@@ -1,0 +1,104 @@
+<div class="container-fluid">
+    <div class="panel panel-default">
+        <form ng-submit="$ctrl.saveEntidade()">
+            <div class="clearfix  panel-heading ">
+                <div class="pull-right form-inline" style="margin-top: 15px">
+                    <button type="button" class="btn btn-default" ui-sref="entidade">Voltar</button>
+                    <button type="submit" class="btn btn-primary ">{{!!$ctrl.entidade.codigo ? 'Atualizar' : 'Cadastrar'}}</button>
+                </div>
+                <div class=""><h3>Formulario de Entidade</h3></div>
+            </div>
+            <div class="panel-body">
+                <flash-message name="entidade-list"></flash-message>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="nome">Nome</label>
+                        <input type="text"
+                               class="form-control"
+                               id="nome"
+                               ng-model="$ctrl.entidade.nome"
+                               ng-required="true"/>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="cpfOuCnpj">Cpf/Cnpj</label>
+                        <input type="text"
+                               class="form-control"
+                               id="cpfOuCnpj"
+                               ng-model="$ctrl.entidade.cpfOuCnpj"
+                               ng-required="true"/>
+                    </div>
+                    <div class="col-md-3" ng-show="$ctrl.entidade.codigo">
+                        <label>Status</label>
+                        <select class="form-control" ng-model="$ctrl.entidade.status"
+                                ng-options=" status.value as status.name  for status in $ctrl.statusList">
+                        </select>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-4">
+                        <label>Celular</label>
+                        <input type="text"
+                               class="form-control"
+                               ng-model="$ctrl.entidade.celular"
+                               ng-required="true"/>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="telefone">Telefone</label>
+                        <input type="text"
+                               class="form-control"
+                               ng-model="$ctrl.entidade.telefone"
+                               ng-required="true"
+                               id="telefone"/>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="email">Email</label>
+                        <input type="text"
+                               class="form-control"
+                               ng-model="$ctrl.entidade.email"
+                               ng-required="true"
+                               id="email"/>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="estado">Estado</label>
+                        <input type="text"
+                               class="form-control"
+                               ng-model="$ctrl.entidade.estado"
+                               ng-required="true"
+                               id="estado"/>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="cidade">Cidade</label>
+                        <input type="text"
+                               class="form-control"
+                               ng-model="$ctrl.entidade.cidade"
+                               ng-required="true"
+                               id="cidade"/>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="bairro">Bairro</label>
+                        <input type="text"
+                               class="form-control"
+                               ng-model="$ctrl.entidade.bairro"
+                               ng-required="true"
+                               id="bairro"/>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-12">
+                        <label for="endereco">Endereço</label>
+                        <input type="text"
+                               class="form-control"
+                               ng-model="$ctrl.entidade.endereco"
+                               ng-required="true" id="endereco"/>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <br> <br>
+    </div>
+</div>
